@@ -4,6 +4,8 @@ import rating from "../../assets/rating.svg";
 import "./Card.css";
 import { MdShoppingCart } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
+import { CARD_IMG } from "../../static";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://dummyjson.com/products";
 const Card = () => {
@@ -22,7 +24,13 @@ const Card = () => {
         {data?.map((el) => (
           <div key={el.id} className="card">
             <div className="card-img">
-              <img src={el.images[0]} alt="" />
+              <Link to={`/products/${el.id}`}>
+                {CARD_IMG[el.id] ? (
+                  <img src={CARD_IMG[el.id]?.img} alt="" />
+                ) : (
+                  <img src={el.images[0]} alt="" />
+                )}
+              </Link>
               <div className="card-hover">
                 <MdShoppingCart className="card-cart" />
                 <FaHeart className="card-heart" />

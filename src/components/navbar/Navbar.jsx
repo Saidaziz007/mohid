@@ -6,6 +6,7 @@ import { IoMdCart } from "react-icons/io";
 import "./Navbar.css";
 import NavbarSearch from "./NavbarSearch";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const API_URL = "https://dummyjson.com/products";
 
@@ -31,12 +32,16 @@ const Navbar = () => {
       <nav className="container">
         <div className="nav-all">
           <div className="nav-logo">
-            <img src={logo} alt="" />
-            <h1>Mohid</h1>
+            <NavLink to={"/"}>
+              <img src={logo} alt="" />
+              <h1>Mohid</h1>
+            </NavLink>
           </div>
           <div className="nav-center">
             <ul className="nav-list">
-              <li className="nav-item">Home</li>
+              <NavLink to={"/"}>
+                <li className="nav-items">Home</li>
+              </NavLink>
               <li className="nav-item">Brands</li>
               <li className="nav-item">Recent Products</li>
               <li className="nav-item">Contact</li>
@@ -53,7 +58,7 @@ const Navbar = () => {
           <div className={`nav-modul ${modul ? "show-modul" : ""}`}>
             <div className="container">
               <div className="nav-modul-all">
-                <div className="nav-logo">
+                <div className="nav-logo-1">
                   <img src={logo} alt="" />
                   <h1>Mohid</h1>
                 </div>
@@ -66,6 +71,7 @@ const Navbar = () => {
                       placeholder="Search"
                     />
                     <button>Search</button>
+                    <IoSearch />
                   </div>
                   {value.trim() ? <NavbarSearch data={data} /> : <></>}
                 </div>
